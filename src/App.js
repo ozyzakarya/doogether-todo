@@ -1,26 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component, Fragment } from "react";
+import { BrowserRouter, Route, Link } from "react-router-dom";
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import BlogPost from './component/Post/BlogPost';
+import Todolist from './component/Todo/TodoList';
+
+class App extends Component {
+  render() {
+    return (
+      <BrowserRouter>
+        <Fragment>
+          <div className="navigation">
+            <Link to="/">Todo List</Link>
+            <Link to="/blogpost">Blog Post</Link>
+          </div>
+          <Route path="/" exact component={Todolist} />
+          <Route path="/blogpost" component={BlogPost} />
+        </Fragment>
+      </BrowserRouter>
+    );
+  }
 }
 
 export default App;
