@@ -13,6 +13,7 @@ class AddTodo extends Component {
   }
   
   handleSubmit = () => {
+    if (this.state.title === '') return
     this.props.addTodo(this.state.title);
     this.setState({ 
         title: '' 
